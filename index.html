@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS Dashboard - Hệ Thống Điều Hành</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+       <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo">⚡ DMS SYSTEM</div>
+            <nav class="nav-menu">
+                <button class="nav-btn active">
+                    <span class="icon">📊</span>
+                    <span class="text">Bản tin tổng hợp</span>
+                </button>
+                <button class="nav-btn">
+                    <span class="icon">🧪</span>
+                    <span class="text">Hồ sơ Lô (Batch)</span>
+                </button>
+                <button class="nav-btn">
+                    <span class="icon">📦</span>
+                    <span class="text">Đơn hàng (Order)</span>
+                </button>
+            </nav>
+            <div class="status-card">
+                <div class="status-info">
+                    <span class="online-dot"></span> 
+                    <span class="status-text">Hệ thống: Online</span>
+                </div>
+            </div>
+        </aside>
+
+          <main class="main-dashboard">
+              <header class="header-content">
+                  <h1>Bản tin Hệ thống 9/2/2026</h1>
+                  <p class="weather-style">"Hôm nay trời quang, các nồi nấu đang vận hành ổn định tại 85°C..."</p>
+              </header>
+              
+              <div class="top-grid">
+                  <div class="card-container pulse-blue">
+                      <div class="card-header">
+                          <h3><span class="online-dot"></span> ĐƠN HÀNG MỚI</h3>
+                      </div>
+                      <table>
+                          <thead>
+                              <tr><th>Mã Đơn</th><th>Khách Hàng</th><th>Trạng Thái</th></tr>
+                          </thead>
+                          <tbody>
+                              <tr><td>#ORD-9921</td><td>Đại lý Minh Tâm</td><td><span class="status-badge new">MỚI</span></td></tr>
+                              <tr><td>#ORD-9922</td><td>VinMart</td><td><span class="status-badge new">MỚI</span></td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+                  <div class="card-container pulse-orange">
+                      <div class="card-header">
+                          <h3><span class="online-dot" style="background: var(--accent); box-shadow: 0 0 8px var(--accent);"></span> LÔ ĐANG NẤU</h3>
+                      </div>
+                      <table>
+                          <thead>
+                              <tr><th>Batch ID</th><th>Trạng Thái</th><th>Khách Hàng</th></tr>
+                          </thead>
+                          <tbody>
+                              <tr><td>#LOT-2024002</td><td><span class="status-badge processing">ĐANG TH</span></td><td>SAGOPHAR</td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+                  <div class="card-container pulse-green">
+                      <div class="card-header">
+                          <h3><span class="online-dot" style="background: var(--success);"></span> THIẾT BỊ</h3>
+                      </div>
+                      <table>
+                          <thead>
+                              <tr><th>Thiết Bị</th><th>Status</th><th>Khu Vực</th></tr>
+                          </thead>
+                          <tbody>
+                              <tr><td>Máy nén khí</td><td><span class="status-badge ok">OK</span></td><td>Xưởng PCT</td></tr>
+                              <tr><td>Đèn LED</td><td><span class="status-badge error">HƯ HỎNG</span></td><td>Lab</td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+      <div class="middle-grid">
+          <div class="card-container pulse-blue">
+              <div class="card-header">
+                  <h3>📈 Hiệu suất vận hành thực tế</h3>
+              </div>
+              <div style="height: 300px; position: relative; width: 100%;">
+                  <canvas id="performanceChart"></canvas>
+              </div>
+          </div>
+
+          <div class="card-container">
+              <div class="card-header">
+                  <h3>🌡️ Thông số Cảm biến</h3>
+              </div>
+              <table class="sensor-table">
+                  <tbody>
+                      <tr><td>Nhiệt độ nồi nấu:</td><td style="color: var(--success); font-weight: bold;">85.2°C</td></tr>
+                      <tr><td>Áp suất hơi:</td><td style="color: var(--primary); font-weight: bold;">1.5 bar</td></tr>
+                      <tr><td>Độ ẩm buồng sấy:</td><td style="color: var(--accent); font-weight: bold;">42%</td></tr>
+                      <tr><td>Tốc độ cánh khuấy:</td><td style="color: var(--text-main); font-weight: bold;">120 RPM</td></tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+              <div class="bottom-grid">
+                  <div class="glass-box">
+                      <div class="box-header">
+                          <h2>🔍 Nhật ký Kiểm tra</h2>
+                      </div>
+                      <div class="table-scroll">
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th>Batch ID</th>
+                                      <th>Kết quả</th>
+                                      <th>Kỹ thuật viên</th>
+                                      <th>Ngày kiểm</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr><td>#BT-01</td><td><span class="status-tag">ĐẠT</span></td><td>Nguyễn Quốc Trình</td><td>09/02</td></tr>
+                                  <tr><td>#BT-02</td><td><span class="status-tag">ĐẠT</span></td><td>Nguyễn Ngọc Khánh Vân</td><td>09/02</td></tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
+                  <div class="glass-box">
+                      <div class="box-header">
+                          <h2>⚙️ Nhật ký Vận hành</h2>
+                      </div>
+                      <div class="table-scroll">
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th>Batch ID</th>
+                                      <th>Bắt đầu</th>
+                                      <th>Kết thúc</th>
+                                      <th>Trạng thái</th>
+                                      <th>Sản lượng</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr><td>#BT-01</td><td>08:00</td><td>10:30</td><td>Xong</td><td>500kg</td></tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </main>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="script.js"></script>
+</body>
+</body>
+</html>
+
