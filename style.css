@@ -1,0 +1,270 @@
+/* 1. ĐỊNH NGHĨA BIẾN VÀ RESET */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --sidebar-bg: #1e293b;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary: #38bdf8;
+    --accent: #fbbf24;
+    --success: #4ade80;
+    --error: #f87171;
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* Font sizes tùy chỉnh */
+    --header-font-size: 18px;
+    --table-font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    overflow: hidden; /* Để scroll chạy trong main-dashboard */
+}
+
+/* 2. CẤU TRÚC LAYOUT CHÍNH */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: 100vh;
+}
+
+/* 3. SIDEBAR VÀ NAVIGATION */
+.sidebar {
+    height: 100vh;
+    background: var(--sidebar-bg);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    outline: none;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.nav-btn.active {
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0.05) 100%);
+    color: var(--primary);
+    border-left: 4px solid var(--primary);
+    font-weight: 600;
+}
+
+.nav-btn:active {
+    transform: scale(0.96);
+}
+
+.status-card {
+    margin-top: auto;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.online-dot {
+    height: 8px;
+    width: 8px;
+    background-color: var(--success);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px var(--success);
+}
+
+/* 4. NỘI DUNG CHÍNH (MAIN DASHBOARD) */
+.main-dashboard {
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: var(--bg-dark);
+}
+
+/* Lưới 3 bảng phía trên */
+.top-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+/* Lưới trung gian - có thể chia 2 cột tỉ lệ khác nhau hoặc 1 cột rộng */
+/* Lưới trung gian (Middle Grid) */
+.middle-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Tỉ lệ 2 phần biểu đồ, 1 phần thông số */
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* Thêm hiệu ứng cho khu vực biểu đồ */
+.chart-container {
+    flex: 1;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+}
+
+#performanceChart {
+    display: block;
+    width: 100% !important;
+    height: 250px !important; /* Đảm bảo có chiều cao cố định */
+}
+
+/* Responsive: Trên điện thoại/máy tính bảng nhỏ sẽ chuyển về 1 cột */
+@media (max-width: 1024px) {
+    .middle-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Lưới 2 bảng nhật ký phía dưới */
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+/* 5. THIẾT KẾ CARD VÀ BẢNG */
+.card-container, .glass-box {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Đồng bộ chiều cao */
+    transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: var(--header-font-size);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Màu tiêu đề theo từng loại pulse */
+.pulse-blue h3 { color: var(--primary); }
+.pulse-orange h3 { color: var(--accent); }
+.pulse-green h3 { color: var(--success); }
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: var(--table-font-size);
+    flex-grow: 1;
+}
+
+th {
+    color: var(--text-sub);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 10px;
+    transition: background 0.2s ease;
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+td:first-child { border-radius: 10px 0 0 10px; }
+td:last-child { border-radius: 0 10px 10px 0; }
+
+/* 6. TRẠNG THÁI (BADGES) */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+}
+
+.status-badge.new { background: rgba(56, 189, 248, 0.15); color: var(--primary); border-color: rgba(56, 189, 248, 0.3); }
+.status-badge.ok { background: rgba(74, 222, 128, 0.15); color: var(--success); border-color: rgba(74, 222, 128, 0.3); }
+.status-badge.error { background: rgba(248, 113, 113, 0.15); color: var(--error); border-color: rgba(248, 113, 113, 0.3); animation: blinker 1.5s infinite; }
+.status-badge.processing { background: rgba(251, 191, 36, 0.15); color: var(--accent); border-color: rgba(251, 191, 36, 0.3); }
+
+@keyframes blinker { 50% { opacity: 0.5; } }
+
+/* 7. SCROLLBAR TÙY CHỈNH */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
