@@ -268,3 +268,94 @@ td:last-child { border-radius: 0 10px 10px 0; }
     background: #334155;
     border-radius: 10px;
 }
+/*Bottom Navigation (thanh điều hướng dưới đáy)*/
+/* --- RESPONSIVE CHO MOBILE --- */
+@media (max-width: 768px) {
+    /* 1. Reset Layout tổng thể */
+    .dashboard-layout {
+        display: block !important; /* Phá vỡ chia cột Sidebar - Main */
+        width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    .main-dashboard {
+        margin-left: 0 !important; /* Xóa khoảng trống bên trái của Sidebar cũ */
+        padding: 15px !important;
+        padding-bottom: 90px !important; /* Chừa chỗ cho menu đáy */
+        width: 100% !important;
+    }
+
+    /* 2. Ép TOÀN BỘ Grid thành 1 cột dọc */
+    .top-grid, 
+    .middle-grid, 
+    .bottom-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Ép xếp chồng lên nhau */
+        grid-template-columns: 1fr !important; /* Nếu CSS cũ dùng grid thì ép về 1 cột */
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* 3. Xử lý các Card và Bảng để không bị tràn */
+    .card-container, .glass-box {
+        width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Cho phép bảng được cuộn ngang nếu quá dài, tránh làm vỡ màn hình */
+    .table-scroll, table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        white-space: nowrap;
+    }
+
+    /* 4. SIDEBAR BIẾN THÀNH BOTTOM NAV */
+    .sidebar {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        background: #0f172a !important; /* Màu sẫm tối của hệ thống */
+        display: flex !important;
+        flex-direction: row !important;
+        z-index: 9999 !important;
+        padding: 0 !important;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+    }
+
+    .nav-btn {
+        flex-direction: column !important; /* Icon trên chữ dưới */
+        font-size: 10px !important;
+        background: transparent !important;
+        color: #94a3b8 !important;
+        padding: 5px 0 !important;
+    }
+
+    .nav-btn.active {
+        color: #38bdf8 !important; /* Màu xanh sáng khi active */
+    }
+
+    /* 5. ẨN CÁC PHẦN KHÔNG CẦN THIẾT TRÊN MOBILE */
+    .sidebar .logo, 
+    .sidebar .status-card,
+    .weather-style {
+        display: none !important;
+    }
+    
+    header.header-content h1 {
+        font-size: 1.5rem !important;
+        text-align: center;
+    }
+}
+/*kết thúc tại đây*/
