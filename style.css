@@ -268,3 +268,69 @@ td:last-child { border-radius: 0 10px 10px 0; }
     background: #334155;
     border-radius: 10px;
 }
+/*Bottom Navigation (thanh điều hướng dưới đáy)*/
+@media (max-width: 768px) {
+    /* 1. CHUYỂN GRID THÀNH DỌC */
+    /* Áp dụng cho layout chính và bất kỳ container nào dùng grid */
+    .dashboard-layout, 
+    .main-dashboard, 
+    .grid-container, 
+    .stats-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 10px !important;
+        margin: 0 !important;
+        gap: 15px !important;
+    }
+
+    /* 2. GIẢI PHÓNG KHÔNG GIAN MAIN CONTENT */
+    /* Xóa bỏ margin-left thần thánh thường gây ra block trắng bên cạnh */
+    .main-content, .main-dashboard {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding-bottom: 80px !important; /* Để không bị menu đáy che khuất */
+    }
+
+    /* 3. ĐƯA SIDEBAR XUỐNG ĐÁY (BOTTOM NAV) */
+    .sidebar {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 65px !important;
+        background: #0f172a !important; /* Màu nền tối của bạn */
+        flex-direction: row !important; /* Sidebar vốn dọc nay thành ngang */
+        z-index: 10000 !important;
+        border-top: 1px solid #1e293b;
+        padding: 0 !important;
+    }
+
+    /* 4. CHỈNH LẠI MENU TRONG SIDEBAR */
+    .nav-menu {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        width: 100% !important;
+        height: 100% !important;
+        align-items: center !important;
+    }
+
+    .nav-btn {
+        flex-direction: column !important; /* Icon trên, chữ dưới */
+        padding: 5px !important;
+        font-size: 12px !important;
+        background: transparent !important;
+    }
+
+    .nav-btn .text {
+        font-size: 10px !important;
+        margin-top: 4px;
+    }
+
+    /* 5. ẨN LOGO TRONG SIDEBAR KHI Ở MOBILE */
+    .sidebar .logo, .sidebar .status-card {
+        display: none !important;
+    }
+}
+/*kết thúc tại đây*/
