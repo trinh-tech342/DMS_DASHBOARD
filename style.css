@@ -358,4 +358,118 @@ td:last-child { border-radius: 0 10px 10px 0; }
         text-align: center;
     }
 }
+.calendar-wrapper {
+    padding: 10px;
+    color: var(--text-main);
+}
+
+/* Tùy chỉnh nhanh giao diện lịch nếu bạn dùng thư viện hoặc tự dựng */
+#sampleCalendar {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.calendar-day.has-sample {
+    position: relative;
+}
+
+.calendar-day.has-sample::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent); /* Màu vàng báo hiệu có mẫu cần kiểm */
+    border-radius: 50%;
+}
+/* Tùy chỉnh màu nền lịch */
+.fc {
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Đổi màu chữ và đường kẻ */
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.fc-col-header-cell-cushion, .fc-daygrid-day-number {
+    color: var(--text-sub) !important;
+    text-decoration: none !important;
+}
+
+/* Highlight ngày hiện tại */
+.fc-day-today {
+    background: rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Nút bấm của lịch */
+.fc-button-primary {
+    background-color: var(--sidebar-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+.fc-button-primary:hover {
+    background-color: var(--primary) !important;
+    color: var(--bg-dark) !important;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000;
+}
+.modal-content {
+    width: 350px;
+    padding: 25px;
+    border: 1px solid var(--primary);
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+.close-btn {
+    background: none; border: none; color: white;
+    font-size: 24px; cursor: pointer;
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.sample-list-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.sample-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s;
+}
+
+.sample-item:hover {
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.sample-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sample-name {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.sample-status {
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 4px;
+}
 /*kết thúc tại đây*/

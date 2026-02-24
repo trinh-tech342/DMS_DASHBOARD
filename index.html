@@ -6,6 +6,7 @@
     <title>DMS Dashboard - Hệ Thống Điều Hành</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 </head>
 <body>
        <div class="dashboard-layout">
@@ -35,8 +36,8 @@
 
           <main class="main-dashboard">
               <header class="header-content">
-                  <h1>Bản tin Hệ thống 9/2/2026</h1>
-                  <p class="weather-style">"Hôm nay trời quang, các nồi nấu đang vận hành ổn định tại 85°C..."</p>
+                  <h1 id="current-date">Bản tin Hệ thống</h1> <p class="weather-style">
+                      Giờ hệ thống: <span id="currentTime">00:00:00</span> </p>
               </header>
               
               <div class="top-grid">
@@ -88,10 +89,18 @@
       <div class="middle-grid">
           <div class="card-container pulse-blue">
               <div class="card-header">
-                  <h3>📈 Hiệu suất vận hành thực tế</h3>
+                  <h3>📅 Lịch Kiểm Mẫu & Theo Dõi</h3>
               </div>
-              <div style="height: 300px; position: relative; width: 100%;">
-                  <canvas id="performanceChart"></canvas>
+              <div class="calendar-wrapper">
+                  <div id='calendar-container' style="height: 400px;"></div>
+              </div>
+              <div class="card-container pulse-blue" style="margin-top: 20px;">
+                  <div class="card-header">
+                      <h3>📋 Danh sách kiểm mẫu trong ngày</h3>
+                  </div>
+                  <div id="today-sample-list" class="sample-list-wrapper">
+                      <p style="padding: 15px; color: var(--text-sub);">Đang tải danh sách...</p>
+                  </div>
               </div>
           </div>
 
@@ -159,5 +168,18 @@
       </div>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script src="script.js"></script>
+      <div id="sampleModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-box">
+        <div class="modal-header">
+            <h2 id="modalTitle">Chi tiết kiểm mẫu</h2>
+            <button onclick="closeModal()" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>📍 Tên mẫu:</strong> <span id="modalName"></span></p>
+            <p><strong>📅 Ngày kiểm:</strong> <span id="modalDate"></span></p>
+            <p><strong>📋 Trạng thái:</strong> <span class="status-badge processing">Chờ kiểm tra</span></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
